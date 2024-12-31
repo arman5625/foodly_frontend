@@ -4,7 +4,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid2";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../State/Authentication/Action";
+import { registerUser } from "../../State/Authentication/Action";
 
 const initialValues = {
   fullName: "",

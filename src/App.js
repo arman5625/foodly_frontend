@@ -7,7 +7,7 @@ import darkTheme from './Theme/Theme';
 import CustomerRoutes from './Routers/CustomerRoutes';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getUser } from './component/State/Authentication/Action';
+import { getUser } from './State/Authentication/Action';
 
 function App() {
 

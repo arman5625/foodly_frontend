@@ -1,5 +1,5 @@
-import {api} from '../../../component/Config';
-import { CREATE_INGREDIENT_FAILURE, CREATE_INGREDIENT_REQUEST, CREATE_INGREDIENT_SUCCESS, GET_INGREDIENTS } from './ActionTypes';
+import {api} from '../../../Config';
+import { CREATE_INGREDIENT_FAILURE, CREATE_INGREDIENT_REQUEST, CREATE_INGREDIENT_SUCCESS, GET_INGREDIENT_CATEGORY_FAILURE, GET_INGREDIENT_CATEGORY_SUCCESS, GET_INGREDIENTS, UPDATE_STOCK } from './ActionTypes';
 
 export const getIngredientsOfRestaurant = ({ id, jwt }) => {
     return async (dispatch) => {
@@ -40,7 +40,7 @@ export const createIngredient = ({ data, jwt }) => {
                 }
             );
 
-            console.log("create all ingredients", data);
+            console.log("create  ingredients", data);
             dispatch({
                 type:CREATE_INGREDIENT_SUCCESS, 
                 payload: data
@@ -54,3 +54,51 @@ export const createIngredient = ({ data, jwt }) => {
     }
 }
 
+export const getIngredientCategory = ({id, jwt}) => {
+    return async (dispatch) => {
+        try {
+            const {data} = await api.get(
+                `/api/admin/ingredients/restaurants/${id}/category`,
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${jwt}`,
+                    },
+                }
+            );
+            console.log("get ingredients category", data);
+            dispatch({
+                type: GET_INGREDIENT_CATEGORY_SUCCESS, 
+                payload:data
+            });
+
+        }catch (error) {
+           console.log("catch error",error);
+           dispatch({type: GET_INGREDIENT_CATEGORY_FAILURE, payload: error})
+        }
+    } 
+}
+
+export const updateStockOfIngredient = ({id, jwt}) => {
+    return async (dispatch) => {
+        try {
+            const {data} = await api.put(
+                `/api/admin/ingredients/${id}/stock`,
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${jwt}`,
+                    },
+                }
+            );
+            console.log("update ingredients category", data);
+            dispatch({
+                type: UPDATE_STOCK, 
+                payload:data
+            });
+
+        }catch (error) {
+           console.log("catch error",error);
+        }
+    } 
+}

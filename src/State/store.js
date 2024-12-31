@@ -6,6 +6,7 @@ import menuItemReducer from "./Menu/Reducer";
 import cartReducer from "./Cart/Reducer";
 import orderReducer from "./Order/Reducer";
 import restaurantsOrderReducer from "./Admin/RestaurantOrder/Reducer";
+import ingredientReducer from "./Admin/Ingredients/Reducer";
 
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     cart: cartReducer,
     order: orderReducer,
     restaurantOrder: restaurantsOrderReducer,
+    ingredients: ingredientReducer
 
 })
 

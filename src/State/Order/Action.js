@@ -1,4 +1,4 @@
-import api from "../../Config";
+import api from "../../Config/api";
 import { CREATE_ORDER_FAILURE, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, GET_USERS_ORDER_FAILURE, GET_USERS_ORDER_REQUEST, GET_USERS_ORDER_SUCCESS } from "./ActionTypes";
 
 export const createOrder = (reqData) => {
