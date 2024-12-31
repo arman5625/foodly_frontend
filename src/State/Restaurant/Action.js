@@ -193,7 +193,7 @@ export const getAllEvents = ({ jwt }) => {
           }
         );
         dispatch({ type: GET_ALL_EVENTS_SUCCESS, payload: res.data });
-        console.log("events", data);
+        console.log("events", res.data);
       } catch (error) {
         console.log("catch error", error);
         dispatch({ type: GET_ALL_EVENTS_FAILURE, payload: error });
@@ -214,7 +214,7 @@ export const deleteEventAction = ({ eventId, jwt }) => {
           }
         );
         dispatch({ type: DELETE_EVENTS_SUCCESS, payload: res.data });
-        console.log("event deleted", data);
+        console.log("event deleted", res.data);
       } catch (error) {
         console.log("catch error", error);
         dispatch({ type: DELETE_EVENTS_FAILURE, payload: error });
@@ -236,7 +236,7 @@ export const getResstaurantsEvents = ({ restaurantId, jwt }) => {
           }
         );
         dispatch({ type: GET_RESTAURENT_EVENTS_SUCCESS, payload: res.data });
-        console.log("events", data);
+        console.log("events", res.data);
       } catch (error) {
         console.log("catch error", error);
         dispatch({ type: GET_RESTAURENT_EVENTS_FAILURE, payload: error });
@@ -258,7 +258,7 @@ export const createCategoryAction = ({ reqData, jwt }) => {
           }
         );
         dispatch({ type: CREATE_CATEGORY_SUCCESS, payload: res.data });
-        console.log("category created", data);
+        console.log("category created", res.data);
       } catch (error) {
         console.log("catch error", error);
         dispatch({ type: CREATE_CATEGORY_FAILURE, payload: error });
@@ -280,7 +280,7 @@ export const getRestaurantsCategory = ({ restaurantId, jwt }) => {
           }
         );
         dispatch({ type: GET_RESTAURENT_CATEGORY_SUCCESS, payload: res.data });
-        console.log("get restaurant category", data);
+        console.log("get restaurant category", res.data);
       } catch (error) {
         console.log("catch error", error);
         dispatch({ type: GET_RESTAURENT_CATEGORY_FAILURE, payload: error });
