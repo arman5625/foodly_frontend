@@ -22,7 +22,8 @@ const menu=[
 ]
 
 const ProfileNavigation = ({open, handleClose}) => {
-  const isSmallScreen = useMediaQuery("(max-width:1000)");
+  const isSmallScreen = useMediaQuery("(max-width:1000px)");
+  console.log("isSmallScreen",isSmallScreen)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -42,7 +43,7 @@ const ProfileNavigation = ({open, handleClose}) => {
   return (
     <div>
       <Drawer 
-         varient={isSmallScreen? "temporary": "permanent"}  
+         variant={isSmallScreen? "temporary": "permanent"}  
          onClose={handleClose} 
          open={isSmallScreen? open: true} 
          anchor="left" 

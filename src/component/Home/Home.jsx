@@ -4,7 +4,7 @@ import MultiItemCarousel from './MultiItemCarousel';
 import RestaurantCard from '../Restaurant/RestaurantCard';
 import { useDispatch, useSelector } from 'react-redux';
 import {getAllRestaurantsAction} from '../../State/Restaurant/Action';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
@@ -18,6 +18,7 @@ const Home = () => {
         dispatch(getAllRestaurantsAction(jwt));
 
     },[])
+
 
   return (
     <div className='pb-10'>
@@ -54,7 +55,7 @@ const Home = () => {
             <div className="flex flex-wrap items-center justify-around gap-5">
 
                 {
-                    restaurant.restaurants.map((item)=>(<RestaurantCard item={item}/>))
+                    restaurant.restaurants.map((item)=>(<RestaurantCard item={item} onClick/>))
                 }
             </div>
         </section>

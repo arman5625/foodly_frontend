@@ -1,4 +1,4 @@
-import api from "../../Config/api";
+import {api} from "../../Config/api";
 import { CREATE_ORDER_FAILURE, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, GET_USERS_ORDER_FAILURE, GET_USERS_ORDER_REQUEST, GET_USERS_ORDER_SUCCESS } from "./ActionTypes";
 
 export const createOrder = (reqData) => {
@@ -8,7 +8,7 @@ export const createOrder = (reqData) => {
             const {data} = await api.post("api/order", reqData.order,
                 {
                     headers: {
-                        Authorization: `Beare ${reqData.jwt}`,
+                        Authorization: `Bearer ${reqData.jwt}`,
                     },
                 });
                 if(data.payment_url){
@@ -29,11 +29,10 @@ export const getUsersOrder = (jwt) => {
     return async (dispatch) => {
         dispatch({type:GET_USERS_ORDER_REQUEST});
         try {
-            const {data} = await api.get("api/order",
-                {},
+            const {data} = await api.get("api/order/user",
                 {
                     headers: {
-                        Authorization: `Beare ${jwt}`,
+                        Authorization: `Bearer ${jwt}`,
                     },
                 });
                 console.log("order data", data);

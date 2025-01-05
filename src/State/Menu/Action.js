@@ -1,4 +1,4 @@
-import api from "../../Config/api";
+import {api} from "../../Config/api";
 import { CREATE_MENU_ITEM_FAILURE, CREATE_MENU_ITEM_REQUEST, CREATE_MENU_ITEM_SUCCESS, DELTE_MENU_ITEM_FAILURE, DELTE_MENU_ITEM_REQUEST, DELTE_MENU_ITEM_SUCCESS, GET_MENU_ITEMS_BY_RESTAURANT_ID_FAILURE, GET_MENU_ITEMS_BY_RESTAURANT_ID_REQUEST, GET_MENU_ITEMS_BY_RESTAURANT_ID_SUCCESS, SEARCH_MENU_ITEM_FAILURE, SEARCH_MENU_ITEM_REQUEST, SEARCH_MENU_ITEM_SUCCESS, UPDATE_MENU_ITEMS_AVAILABILITY_FAILURE, UPDATE_MENU_ITEMS_AVAILABILITY_REQUEST, UPDATE_MENU_ITEMS_AVAILABILITY_SUCCESS } from "./ActionTypes";
 
 export const createMenuItem = ({menu, jwt}) => {
@@ -27,11 +27,10 @@ export const getMenuItemByRestaurantId = (reqData) => {
         dispatch({type:GET_MENU_ITEMS_BY_RESTAURANT_ID_REQUEST});
         try {
             const {data} = await api.get(`api/food/restaurant/${reqData.restaurantId}?vegetarian=${reqData.vegetarian}
-                &nonveg=${reqData.nonveg}&seasonal=${reqData.seasonal}&food_category=${reqData.foodCategory}`,
-                {},
+                &nonVeg=${reqData.nonveg}&seasonal=${reqData.seasonal}&food_category=${reqData.foodCategory}`,
                 {
                     headers: {
-                        Authorization: `Beare ${reqData.jwt}`,
+                        Authorization: `Bearer ${reqData.jwt}`,
                     },
                 });
                 console.log(" menu by restaurant id", data);
