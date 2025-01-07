@@ -2,11 +2,13 @@ import { Box, Card, CardHeader, IconButton, Paper, Table, TableBody, TableCell, 
 import React from 'react'
 import CreateIcon from '@mui/icons-material/Create';
 import { Delete } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const menus = [1,2,3];
 
 
 const MenuTable = () => {
+  const navigate = useNavigate();
   return (
     <Box>
         <Card className='mt-1'>
@@ -14,7 +16,7 @@ const MenuTable = () => {
             title={"Menu"}
             sx={{pt:2, alignItems:"center"}}
             action={
-                <IconButton aria-label="settings">
+                <IconButton onClick={() => navigate("/admin/restaurants/add-menu")} aria-label="settings">
                     <CreateIcon/>
                 </IconButton>
             }
