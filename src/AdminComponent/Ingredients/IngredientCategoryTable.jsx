@@ -15,7 +15,7 @@ import {
 import React, { useState } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import CreateIngredientCategoryForm from "./CreateIngredientCategoryForm";
-import { style } from "../../component/Cart/Cart";
+import { modalStyle } from '../utils/modalStyle';
 
 const menus = [1, 2, 3];
 
@@ -61,7 +61,7 @@ const IngredientCategoryTable = () => {
       </TableContainer>
 
       <Modal open={openModal} onClose={handleOnClose}>
-        <Box sx={style}>
+        <Box sx={modalStyle}>
           <CreateIngredientCategoryForm />
         </Box>
       </Modal>
