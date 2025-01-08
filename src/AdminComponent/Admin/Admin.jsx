@@ -30,6 +30,7 @@ const Admin = () => {
                 <Route path="/events" element={<Events/>}/>
                 <Route path="/details" element={<RestaurantDetails/>}/>
                 <Route path="/add-menu" element={<CreateMenuForm/>}/>
+                
             </Routes>
         </div>
 

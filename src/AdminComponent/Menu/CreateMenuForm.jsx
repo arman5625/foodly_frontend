@@ -210,8 +210,8 @@ const CreateMenuForm = () => {
                 label="Food Category"
                 onChange={formik.handleChange}
             >
-                <MenuItem value={true}>True</MenuItem>
-                <MenuItem value={false}>False</MenuItem>
+                <MenuItem value={true}>Yes</MenuItem>
+                <MenuItem value={false}>No</MenuItem>
             </Select>
             </FormControl>
             </Grid>
@@ -226,8 +226,8 @@ const CreateMenuForm = () => {
                 label="Is Vegetarian"
                 onChange={formik.handleChange}
             >
-                <MenuItem value={true}>True</MenuItem>
-                <MenuItem value={false}>False</MenuItem>
+                <MenuItem value={true}>Yes</MenuItem>
+                <MenuItem value={false}>No</MenuItem>
             </Select>
             </FormControl>
             </Grid>
