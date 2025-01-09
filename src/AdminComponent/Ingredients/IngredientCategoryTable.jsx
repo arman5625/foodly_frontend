@@ -15,16 +15,19 @@ import {
 import React, { useState } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import CreateIngredientCategoryForm from "./CreateIngredientCategoryForm";
-import { modalStyle } from '../utils/modalStyle';
+import { modalStyle } from "../utils/modalStyle";
+import { useDispatch, useSelector } from "react-redux";
 
 const menus = [1, 2, 3];
 
 const IngredientCategoryTable = () => {
+  const { ingredients } = useSelector((store) => store);
   const [openModal, setOpenModal] = useState(false);
 
   const handleOnClose = () => setOpenModal(false);
   const handleOpenModal = () => setOpenModal(true);
 
+  console.log("ingredients",ingredients)
   return (
     <Box>
       <Card className="mt-1">
@@ -47,13 +50,13 @@ const IngredientCategoryTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {menus.map((menu) => (
+            {ingredients.category?.map((ingredientCategory) => (
               <TableRow
-                key={menu}
+                key={ingredientCategory.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="left">{menu}</TableCell>
-                <TableCell align="left">{"bread"}</TableCell>
+                <TableCell align="left">{ingredientCategory.id}</TableCell>
+                <TableCell align="left">{ingredientCategory.name}</TableCell>
               </TableRow>
             ))}
           </TableBody>

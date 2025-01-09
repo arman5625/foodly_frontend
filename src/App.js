@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { getUser } from './State/Authentication/Action';
 import { findCart } from './State/Cart/Action';
 import Routers from './Routers/Routers';
+import { getRestaurantByUserId } from './State/Restaurant/Action';
 
 function App() {
 
@@ -22,6 +23,10 @@ function App() {
 
     dispatch(findCart(jwt));
   },[auth.jwt])
+
+useEffect(()=>{
+      dispatch(getRestaurantByUserId(auth.jwt || jwt));
+},[auth.user])
 
   return (
     <div className="App">

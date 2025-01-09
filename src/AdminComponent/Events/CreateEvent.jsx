@@ -4,24 +4,34 @@ import Grid from "@mui/material/Grid2";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
+
+const initialValue = {
+  name: "",
+  location: "",
+  imageUrl: "",
+  startedAt: null,
+  endsAt: null,
+}
+
 const CreateEvent = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    location: "",
-    imageUrl: "",
-    startedAt: null,
-    endsAt: null,
-  });
+  const [formData, setFormData] = useState(initialValue);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const data = {
       name: formData.name,
       location: formData.location,
       imageUrl: formData.imageUrl,
-      startedAt: formData.startedAt,
-      endsAt: formData.endsAt,
+      startedAt: formData.startedAt
+        ? dayjs(formData.startedAt).format("MMMM DD, YYYY hh:mm A")
+        : null,
+      endsAt: formData.endsAt
+        ? dayjs(formData.endsAt).format("MMMM DD, YYYY hh:mm A")
+        : null,
     };
+
+    setFormData(initialValue);
 
     console.log("data", data);
   };
@@ -35,10 +45,9 @@ const CreateEvent = () => {
   };
 
   const handleDateChange = (date, dateType) => {
-    const formatedDate = dayjs(date).format("MMMM DD,YYYY hh:mm A");
     setFormData({
       ...formData,
-      [dateType]: formatedDate,
+      [dateType]: date, // Store the dayjs object directly
     });
   };
 
@@ -91,28 +100,25 @@ const CreateEvent = () => {
                     handleDateChange(newValue, "startedAt")
                   }
                   label="Start Date and Time"
-                  className="w-full"
-                  inputFormate="MM/DD/YYYY hh:mm a"
+                  value={formData.startedAt}
                   sx={{ width: "100%" }}
                 ></DateTimePicker>
               </LocalizationProvider>
             </Grid>
             <Grid size={{ xs: 12, md: 12 }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateTimePicker
                   renderInput={(props) => <TextField {...props} />}
                   onChange={(newValue) =>
                     handleDateChange(newValue, "endsAt")
                   }
                   label="End Date and Time"
-                  className="w-full"
-                  inputFormate="MM/DD/YYYY hh:mm a"
+                  value={formData.endsAt}
                   sx={{ width: "100%" }}
                 ></DateTimePicker>
               </LocalizationProvider>
             </Grid>
             <Button color="primary" variant="contained" type="submit">
-              {" "}
               Submit
             </Button>
           </Grid>

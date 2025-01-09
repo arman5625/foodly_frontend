@@ -8,7 +8,7 @@ export const createMenuItem = ({menu, jwt}) => {
             const {data} = await api.post("api/admin/food", menu,
                 {
                     headers: {
-                        Authorization: `Beare ${jwt}`,
+                        Authorization: `Bearer ${jwt}`,
                     },
                 });
                 console.log("created menu", data);

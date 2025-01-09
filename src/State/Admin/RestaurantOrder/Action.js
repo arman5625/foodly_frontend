@@ -1,7 +1,8 @@
-import {api} from "../../../component/Config/api";
+
+import { api } from "../../../Config/api";
 import { GET_RESTAURANT_ORDER_FAILURE, GET_RESTAURANT_ORDER_REQUEST, GET_RESTAURANT_ORDER_SUCCESS, UPDATE_ORDER_STATUS_FAILURE, UPDATE_ORDER_STATUS_REQUEST, UPDATE_ORDER_STATUS_SUCCESS } from "./ActionTypes";
 
-export const updateOrderStatus = ({orderId, orderStatus}) => {
+export const updateOrderStatus = ({orderId, orderStatus, jwt}) => {
     return async (dispatch) => {
         try{
             dispatch({type: UPDATE_ORDER_STATUS_REQUEST});
